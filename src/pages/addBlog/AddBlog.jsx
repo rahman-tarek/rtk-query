@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { usePostNewBlogMutation } from "../../redux/services/blogposts";
+import { usePostNewBlogMutation, useUpdateBlogMutation } from "../../redux/services/blogposts";
 
 const AddBlog = () => {
     const [title, setTitle] = useState("");
@@ -8,7 +8,7 @@ const AddBlog = () => {
     const [userId, setUserId] = useState("");
 
     const [postNewBlog] = usePostNewBlogMutation();
-
+    const [updateBlog] = useUpdateBlogMutation()
     // Post new blog
     const handleNewBlogSubmit = (e) => {
         e.preventDefault();
@@ -20,6 +20,18 @@ const AddBlog = () => {
         }
         postNewBlog(newBlog);
     }
+    // Post new blog
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        const newBlog = {
+            userId,
+            id,
+            title,
+            body: description
+        }
+        updateBlog(newBlog);
+    }
+
 
     return (
         <>
@@ -33,7 +45,7 @@ const AddBlog = () => {
                         <input type="text" placeholder="Id" value={id} onChange={(e) => setId(e.target.value)} />
                         <input type="text" placeholder="User ID" value={userId} onChange={(e) => setUserId(e.target.value)} />
                         <button type="submit">Submit</button>
-
+                        <button type="submit" onClick={handleUpdate}>Submit</button>
                     </form>
                 </div>
             </div>
