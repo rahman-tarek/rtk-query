@@ -10,7 +10,7 @@ const AddBlog = () => {
     const [postNewBlog] = usePostNewBlogMutation();
     const [updateBlog] = useUpdateBlogMutation()
     // Post new blog
-    const handleNewBlogSubmit = (e) => {
+    const handleNewBlogSubmit = async (e) => {
         e.preventDefault();
         const newBlog = {
             userId,
@@ -18,10 +18,10 @@ const AddBlog = () => {
             title,
             body: description
         }
-        postNewBlog(newBlog);
+       await postNewBlog(newBlog);
     }
-    // Post new blog
-    const handleUpdate = (e) => {
+    // Update new blog
+    const handleUpdate = async (e) => {
         e.preventDefault();
         const newBlog = {
             userId,
@@ -29,7 +29,7 @@ const AddBlog = () => {
             title,
             body: description
         }
-        updateBlog(newBlog);
+        await updateBlog(newBlog);
     }
 
 

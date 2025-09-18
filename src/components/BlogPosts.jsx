@@ -8,8 +8,8 @@ const BlogPosts = () => {
     const navigate = useNavigate();
 
     // Delete post
-    const handleDelete = (id) => {
-        deleteBlog(id)
+    const handleDelete = async (id) => {
+        await deleteBlog(id)
     }
     return (
         <>
