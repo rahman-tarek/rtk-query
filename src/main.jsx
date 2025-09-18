@@ -7,6 +7,7 @@ import store from './redux/store.js'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Home from './pages/home/home.jsx'
 import Blog from './pages/blog/Blog.jsx'
+import BlogPosts from './components/BlogPosts.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -14,8 +15,8 @@ createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <Routes>
           <Route element={<App />}>
-            <Route to="/" element={<Home />} />
-            <Route to="/blogs/:id" element={<Blog />} />
+            <Route index element={<BlogPosts />} />
+            <Route path="/blogs/:id" element={<Blog />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -4,11 +4,16 @@ import { useGetBlogByIdQuery } from "../../redux/services/blogposts";
 const Blog = () => {
     const { id } = useParams();
     console.log(id)
-    const { data, loading, error } = useGetBlogByIdQuery(id);
+    const { data, error, isLoading } = useGetBlogByIdQuery(id);
+    console.log(data)
     return (
         <>
             <div>
-                <h2>{data.title}</h2>
+                {
+                    isLoading ? <div>Loading</div> :
+                        <h2>{data.title}</h2>
+                }
+
             </div>
         </>
     )
