@@ -10,7 +10,7 @@ const BlogPosts = () => {
         <>
             {
                 isLoading ? <p>Loading</p> :
-                    data && data.map((item, index) => (
+                    data && data.slice(0, 10).map((item, index) => (
                         <div key={index} className="p-4">
                             <Link className="p-4" to={`/blogs/${item.id}`}>{item.title}</Link>
                         </div>

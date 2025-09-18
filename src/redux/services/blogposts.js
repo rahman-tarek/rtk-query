@@ -9,8 +9,15 @@ const blogpostsApi = createApi({
         }),
         getBlogById: builder.query({
             query: (id) => `/posts/${id}`
+        }),
+        postNewBlog: builder.mutation({
+            query: (data) => ({
+                url: "/posts",
+                method: "POST",
+                body: data
+            })
         })
     })
 })
-export const { useGetAllPostsQuery, useGetBlogByIdQuery } = blogpostsApi;
+export const { useGetAllPostsQuery, useGetBlogByIdQuery, usePostNewBlogMutation } = blogpostsApi;
 export default blogpostsApi;
